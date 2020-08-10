@@ -5,7 +5,7 @@ import { faMapMarkerAlt, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import Config from '../@utils/Config';
 
-function Home() {
+function Home({ history }) {
 
     const [place, setPlace] = useState('');
     const [locality, setLocality] = useState('');
@@ -31,41 +31,46 @@ function Home() {
         setLocality(e.target.value);
     }
 
+    const handleFocus = () => {
+        history.push('/search');
+    }
+
     return (
-        <Container fluid className="pr-0 pl-0">
-            <Navbar bg="light" expand="lg">
+        <Container fluid>
+            <Navbar bg="light" expand="lg" className="fixed-top">
                 <Navbar.Brand href="#home"></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
+                        <Nav.Link href="#/">Home</Nav.Link>
                         <Nav.Link href="#/login">Login</Nav.Link>
                         <Nav.Link href="#/signup">Register</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            <header className="text-center mt-4">
-                <h1 className="display-3">Clone</h1>
+            <header className="text-center" style={{ marginTop: '90px' }}>
+                <h1 className="display-3">e-Com</h1>
                 <p>Discover the best food and drinks</p>
                 <p>in</p>
                 <p>{place}</p>
             </header>
-            <Row className="mr-0 ml-0 mt-4">
+            <Row className="mt-4">
                 <Col>
-                    <InputGroup className="mb-3">
+                    <InputGroup>
                         <InputGroup.Prepend>
-                            <InputGroup.Text className="border-right-0" style={{backgroundColor: '#ffffff'}} id="basic-geolocation"><FontAwesomeIcon icon={faMapMarkerAlt} /></InputGroup.Text>
+                            <InputGroup.Text id="basic-geolocation"><FontAwesomeIcon icon={faMapMarkerAlt} /></InputGroup.Text>
                         </InputGroup.Prepend>
-                        <FormControl type="text" size="lg" className="border-left-0" value={locality} onChange={handleChange} aria-label="geolocation" aria-describedby="basic-geolocation" />
+                        <FormControl type="text" size="lg" value={locality} onChange={handleChange} aria-label="geolocation" aria-describedby="basic-geolocation" />
                     </InputGroup>
                 </Col>
             </Row>
-            <Row className="mr-0 ml-0 mt-1">
+            <Row className="mt-1">
                 <Col>
-                    <InputGroup className="mb-3">
+                    <InputGroup>
                         <InputGroup.Prepend>
-                            <InputGroup.Text className="border-right-0" style={{backgroundColor: '#ffffff'}} id="basic-geolocation"><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
+                            <InputGroup.Text style={{ backgroundColor: '#ffffff' }} id="basic-geolocation"><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
                         </InputGroup.Prepend>
-                        <FormControl type="text" size="lg" className="border-left-0" placeholder="Search..." aria-label="geolocation" aria-describedby="basic-geolocation" />
+                        <FormControl type="text" size="lg" placeholder="Search..." aria-label="geolocation" aria-describedby="basic-geolocation" onFocus={handleFocus} />
                     </InputGroup>
                 </Col>
             </Row>
