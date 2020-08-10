@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Navbar, Nav, Form, Button } from 'react-bootstrap';
 
 function SignUp() {
@@ -42,9 +43,8 @@ function SignUp() {
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="I agree" />
                         </Form.Group>
-                        <Button variant="dark" size="lg" type="submit" block>
-                            Create Account
-                        </Button>
+                        <button type="submit" className="btn btn-block btn-success">Create Account</button>
+                        <Link to="/restaurant-add" className="btn btn-block btn-warning">Add Restaurant</Link>
                     </Form>
                 </Col>
             </Row>
