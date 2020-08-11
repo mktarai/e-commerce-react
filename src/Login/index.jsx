@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Container, Row, Col, Navbar, Nav, Form, Button } from 'react-bootstrap';
 
-function Login() {
+function Login({ history }) {
 
     useEffect(() => {
 
@@ -9,6 +9,8 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        history.push('/home/profile');
     }
 
     return (
