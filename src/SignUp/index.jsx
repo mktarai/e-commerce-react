@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Navbar, Nav, Form, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
-function SignUp() {
+function SignUp({ history }) {
 
     useEffect(() => {
 
@@ -10,45 +11,48 @@ function SignUp() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        history.push('/home/profile');
     }
 
     return (
-        <Container fluid className="pr-0 pl-0">
-            <Navbar bg="light" expand="lg" className="fixed-top">
-                <Navbar.Brand href="#home">Sign Up</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#/">Home</Nav.Link>
-                        <Nav.Link href="#/login">Login</Nav.Link>
-                        <Nav.Link href="#/signup">Register</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-            <Row className="mr-0 ml-0" style={{ marginTop: '90px' }}>
-                <Col>
-                    <Form onSubmit={handleSubmit} noValidate>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control type="text" size="lg" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Phone/Email</Form.Label>
-                            <Form.Control type="text" size="lg" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" size="lg" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="I agree" />
-                        </Form.Group>
+        <div className="container-fluid pr-0 pl-0">
+            <nav className="navbar fixed-top navbar-light bg-light">
+                <Link to="/login" className="navbar-brand pt-0 pb-0"><FontAwesomeIcon icon={faArrowCircleLeft} /></Link>
+                <span className="navbar-text h4 mb-0 p-0">
+                    Sign Up
+                </span>
+            </nav>
+            <div className="row mr-0 ml-0 mb-2" style={{ marginTop: '75px' }}>
+                <div className="col pr-2 pl-2">
+                    <form onSubmit={handleSubmit} noValidate>
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input type="text" name="name" id="name" className="form-control" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="phone">Phone</label>
+                            <input type="tel" name="phone" id="phone" className="form-control" required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" name="email" id="email" className="form-control" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input type="password" name="password" id="password" className="form-control" required />
+                        </div>
+                        <div className="form-group">
+                            <div className="custom-control custom-switch">
+                                <input type="checkbox" className="custom-control-input" id="customSwitch1" />
+                                <label className="custom-control-label" htmlFor="customSwitch1">I agree</label>
+                            </div>
+                        </div>
                         <button type="submit" className="btn btn-block btn-success">Create Account</button>
-                        <Link to="/restaurant-add" className="btn btn-block btn-warning">Add Restaurant</Link>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+                    </form>
+                </div>
+            </div>
+        </div>
     )
 }
 

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col, Navbar, Nav, Form, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function Login({ history }) {
 
@@ -10,40 +12,38 @@ function Login({ history }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        sessionStorage.setItem('user.info', JSON.stringify({
+            name: 'Monish Kumar Tarai'
+        }));
+
         history.push('/home/profile');
     }
 
     return (
-        <Container fluid className="pr-0 pl-0">
-            <Navbar bg="light" expand="lg" className="fixed-top">
-                <Navbar.Brand href="#home">Sign In</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#/">Home</Nav.Link>
-                        <Nav.Link href="#/login">Login</Nav.Link>
-                        <Nav.Link href="#/signup">Register</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-            <Row className="mr-0 ml-0" style={{ marginTop: '90px' }}>
-                <Col>
-                    <Form onSubmit={handleSubmit} noValidate>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Phone/Email</Form.Label>
-                            <Form.Control type="text" size="lg" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" size="lg" />
-                        </Form.Group>
-                        <Button variant="dark" type="submit" size="lg" block>
-                            Login
-                        </Button>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+        <div className="container-fluid pr-0 pl-0">
+            <nav className="navbar fixed-top navbar-light bg-light">
+                <Link to="/" className="navbar-brand pt-0 pb-0"><FontAwesomeIcon icon={faArrowCircleLeft} /></Link>
+                <span className="navbar-text h4 mb-0 p-0">
+                    Sign In
+                </span>
+            </nav>
+            <div className="row mr-0 ml-0" style={{ marginTop: '75px' }}>
+                <div className="col pr-2 pl-2">
+                    <form onSubmit={handleSubmit} autoComplete="off" noValidate>
+                        <div className="form-group">
+                            <label htmlFor="username">Phone/Email</label>
+                            <input type="text" name="username" id="username" className="form-control" required/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input type="password" name="password" id="password" className="form-control" required/>
+                        </div>
+                        <button type="submit" className="btn btn-block btn-success">Login</button>
+                        <Link to="/signup" className="btn btn-block btn-secondary">New User?Signup</Link>
+                    </form>
+                </div>
+            </div>
+        </div>
     )
 }
 

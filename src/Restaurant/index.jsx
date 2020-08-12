@@ -1,25 +1,25 @@
 import React from 'react';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faStarHalfAlt, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
 
-function Restaurant() {
+function RestaurantList({ history }) {
+
+    const handleClick = () => {
+        history.push('/restaurant-menu');
+    }
+
     return (
-        <Container fluid>
-            <Navbar bg="light" expand="lg" className="fixed-top">
-                <Navbar.Brand href="#home">Restaurants</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#/">Home</Nav.Link>
-                        <Nav.Link href="#/login">Login</Nav.Link>
-                        <Nav.Link href="#/signup">Register</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-            <div className="row" style={{ marginTop: '90px' }}>
-                <div className="col">
-                    <div className="card mb-2">
+        <div className="container-fluid pr-0 pl-0">
+            <nav className="navbar fixed-top navbar-light bg-light">
+                <Link to="/" className="navbar-brand pt-0 pb-0"><FontAwesomeIcon icon={faArrowCircleLeft} /></Link>
+                <span className="navbar-text h4 mb-0 p-0">
+                    Search
+                </span>
+            </nav>
+            <div className="row mr-0 ml-0" style={{ marginTop: '75px' }}>
+                <div className="col pr-2 pl-2">
+                    <div className="card mb-2" onClick={handleClick}>
                         <img src="https://via.placeholder.com/1024x512" className="card-img-top" alt="..." />
                         <div className="card-body pt-1 pb-1">
                             <h5 className="card-title mb-0">Kabita's Kitchen</h5>
@@ -59,8 +59,8 @@ function Restaurant() {
                     </div>
                 </div>
             </div>
-        </Container>
+        </div>
     )
 }
 
-export default Restaurant;
+export default RestaurantList;

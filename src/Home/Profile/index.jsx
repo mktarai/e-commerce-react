@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 
-function Profile() {
+function Profile({ toggleDrawer }) {
+
+    useEffect(() => {
+        toggleDrawer(false);
+    }, [toggleDrawer])
+
     return (
         <div className="container-fluid mb-3" style={{ paddingLeft: '5px', paddingRight: '5px' }}>
             <div className="card mt-2">
@@ -11,38 +16,40 @@ function Profile() {
                 </div>
                 <div className="card-body text-center">
                     <h5 className="card-title">Monish Kumar Tarai</h5>
-                    <p className="card-text"><FontAwesomeIcon icon={faEnvelope} className="text-muted" /> <small className="text-muted">talk2monish@outlook.com</small></p>
-                    <p className="card-text"><FontAwesomeIcon icon={faPhone} className="text-muted" /> <small className="text-muted">+91 9711495838</small></p>
+                    <p className="card-text">
+                        <FontAwesomeIcon icon={faEnvelope} className="text-muted" /> <small className="text-muted">talk2monish@outlook.com</small>
+                        <FontAwesomeIcon icon={faPhone} className="text-muted ml-2" /> <small className="text-muted">+91 9711495838</small>
+                    </p>
                 </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item list-group-item-action list-group-item-secondary">
-                        <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1">Addresses</h5>
-                            <small><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABy0lEQVRIie2Uu24TURCGDwEqUnFRusgSEijhZjdAA7KERANvQJNHoKPdisaWz/zf7BYukNLiKg0NBYqiFJAuNWCeIFIUAg5IKDRnJWPhzdppM9JWM/N/c+ayIZzZLCbJgB1gc/KTtB9jbJwKAOxU+FqSvp8KAmyGEEK3270KvAE2gFbpjzE2gcO5ISUgiT+VtAwcjMeY2V1JP+aCjAE2JC33+/2LwN5knLvfAX7ODBkDtIADYA948b9YSbdnhpSAupbn+S1Jo9oQSfvjQ61Z1CpwVAsSY2ykVWzOAokxrgC/akEkPQEOJQ2BXXf/CDw6Kc/Mbkr6XQkBrkv6FGNsxhgb7t42syXgA/DsJEie5zckDasAb8v2uHtbUhZCCEVRLAJ/BoPB+SoAcE3SaGqAmW2XlQMv3X3d3dvpgnPg3rTcdP3fKtspaaus3N3X008uA9bcvWNmD6aJp5lVz0rSezNbCuHfFmVZtgDsAvcnc/I8v+LuX+ssQjCzx+7+riiKxdSWtSzLFtz9tSSTNAJWy/her3cZ+FJLfKyi52k189SWbeDV8fHxuRhjIx3VShL/PJN4aVmWXUgveNjpdC6N+9IxDoGjucTPbNL+AlKwUX6iRC+XAAAAAElFTkSuQmCC" alt="" /></small>
-                        </div>
-                    </li>
-                    <li className="list-group-item list-group-item-action">
-                        <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1"></h5>
-                            <small>Work</small>
-                        </div>
-                        <p className="mb-1">UBN Software Solutions Pvt Ltd</p>
-                        <p className="mb-1">1st Floor, Rajdhani Offset Printing Press</p>
-                        <p className="mb-1">Mancheswar Industrial Estate</p>
-                        <p className="mb-1">Bhubaneswar-751010</p>
-                    </li>
-                    <li className="list-group-item list-group-item-action">
-                        <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1"></h5>
-                            <small>Home</small>
-                        </div>
-                        <p className="mb-1">C/O- Late Dr Sashi Bhusan Mohanty</p>
-                        <p className="mb-1">Near Maa Barahi Mandir</p>
-                        <p className="mb-1">Kesharpur</p>
-                        <p className="mb-1">Cuttack-753001</p>
-                    </li>
-                </ul>
             </div>
+            <ul className="list-group list-group-flush mt-2">
+                <li className="list-group-item list-group-item-action list-group-item-secondary">
+                    <div className="d-flex w-100 justify-content-between">
+                        <h5 className="mb-1">Addresses</h5>
+                        <small><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABy0lEQVRIie2Uu24TURCGDwEqUnFRusgSEijhZjdAA7KERANvQJNHoKPdisaWz/zf7BYukNLiKg0NBYqiFJAuNWCeIFIUAg5IKDRnJWPhzdppM9JWM/N/c+ayIZzZLCbJgB1gc/KTtB9jbJwKAOxU+FqSvp8KAmyGEEK3270KvAE2gFbpjzE2gcO5ISUgiT+VtAwcjMeY2V1JP+aCjAE2JC33+/2LwN5knLvfAX7ODBkDtIADYA948b9YSbdnhpSAupbn+S1Jo9oQSfvjQ61Z1CpwVAsSY2ykVWzOAokxrgC/akEkPQEOJQ2BXXf/CDw6Kc/Mbkr6XQkBrkv6FGNsxhgb7t42syXgA/DsJEie5zckDasAb8v2uHtbUhZCCEVRLAJ/BoPB+SoAcE3SaGqAmW2XlQMv3X3d3dvpgnPg3rTcdP3fKtspaaus3N3X008uA9bcvWNmD6aJp5lVz0rSezNbCuHfFmVZtgDsAvcnc/I8v+LuX+ssQjCzx+7+riiKxdSWtSzLFtz9tSSTNAJWy/her3cZ+FJLfKyi52k189SWbeDV8fHxuRhjIx3VShL/PJN4aVmWXUgveNjpdC6N+9IxDoGjucTPbNL+AlKwUX6iRC+XAAAAAElFTkSuQmCC" alt="" /></small>
+                    </div>
+                </li>
+                <li className="list-group-item list-group-item-action">
+                    <div className="d-flex w-100 justify-content-between">
+                        <h5 className="mb-1">Primary</h5>
+                        <small>Work</small>
+                    </div>
+                    <p className="mb-1">UBN Software Solutions Pvt Ltd</p>
+                    <p className="mb-1">1st Floor, Rajdhani Offset Printing Press</p>
+                    <p className="mb-1">Mancheswar Industrial Estate</p>
+                    <p className="mb-1">Bhubaneswar-751010</p>
+                </li>
+                <li className="list-group-item list-group-item-action">
+                    <div className="d-flex w-100 justify-content-between">
+                        <h5 className="mb-1">Secondary</h5>
+                        <small>Home</small>
+                    </div>
+                    <p className="mb-1">C/O- Late Dr Sashi Bhusan Mohanty</p>
+                    <p className="mb-1">Near Maa Barahi Mandir</p>
+                    <p className="mb-1">Kesharpur</p>
+                    <p className="mb-1">Cuttack-753001</p>
+                </li>
+            </ul>
         </div>
     )
 }
